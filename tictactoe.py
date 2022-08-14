@@ -4,42 +4,43 @@ def display(r_1):
     print(r_1[2])
 
 
-list_1 = [[" " ," "," "],[" " ," "," "],[" " ," "," "]]
-
+list_1 = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
 
 def check_who_won(list__):
     t_1 = False
-    for i in range(0,3):
+    for i in range(0, 3):
         val_1 = list__[i][0]
         val_2 = list__[i][1]
         val_3 = list__[i][2]
-        if val_1 == val_2 == val_3:
+        if val_1 != " " and val_1 == val_2 == val_3:
             print(val_1)
             return True
 
-    for i in range(0,3):
+    for i in range(0, 3):
         val_1 = list__[0][i]
         val_2 = list__[1][i]
         val_3 = list__[2][i]
-        if val_1 == val_2 == val_3:
+        if val_1 != " " and val_1 == val_2 == val_3:
             print(val_1)
             return True
-    if list__[0][0] == list__[1][1] == list__[2][2]:
+    if list__[1][1] != " " and list__[0][0] == list__[1][1] == list__[2][2]:
         print(list__[0][0])
         return True
-    if list__[2][0] == list__[1][1] == list__[2][0]:
-        pass
-            
-            
+    if list__[1][1] != " " and list__[2][0] == list__[1][1] == list__[2][0]:
+        print(list__[1][1])
+        return True
+
+    return False
 
 
 def main_fun():
     print("Hello Welcome to the game")
     i = 0
+    play_button = 1
 
     while True:
-        display()
+        display(list_1)
         if i % 2 == 0:
             print("P1 make your move!")
             print("Value range from 0-2")
@@ -53,13 +54,9 @@ def main_fun():
             p_2_col = int(input("Enter column: "))
             list_1[p_2_row][p_2_col] = 'X'
         i = i + 1
-        display()
-        
+        if check_who_won(list_1) == True:
+            print("Game Over!")
+            break
 
-            
 
-
-        
-
-   
-    
+main_fun()
